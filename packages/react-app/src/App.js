@@ -1,13 +1,14 @@
 import React, {useState } from "react";
 import { useEthers } from "@usedapp/core";
 import styles from "./styles";
+import { usePools } from './hooks'
 import { uniswapLogo } from "./assets";
 import { Loader, WalletButton, Exchange} from './components'
 
-const poolIsLoading = false
 
 const App = () => {
   const { account } = useEthers();
+  const [loading, pools] = usePools();
 
   return (
     <div className={styles.container}>
@@ -27,7 +28,7 @@ const App = () => {
             <div className={styles.exchangeBox}>
               <div className="pink_gradient" />
               <div className={styles.exchange}>
-               {account ? (poolIsLoading ? (<Loader title="Loading Pools, please wait!"/>) : <Exchange />) : <Loader title="Please connect your wallet"/>}
+               {account ? (loading ? (<Loader title="Loading Pools, please wait!"/>) : <Exchange pools={pools} />) : <Loader title="Please connect your wallet"/>}
               </div>
               <div className="blue_gradient" />
             </div>
