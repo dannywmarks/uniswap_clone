@@ -27,7 +27,7 @@ const App = () => {
             <div className={styles.exchangeBox}>
               <div className="pink_gradient" />
               <div className={styles.exchange}>
-               {account ? (poolIsLoading ? (<Loader />) : <Exchange />) : <Loader />}
+               {account ? (poolIsLoading ? (<Loader title="Loading Pools, please wait!"/>) : <Exchange />) : <Loader title="Please connect your wallet"/>}
               </div>
               <div className="blue_gradient" />
             </div>
